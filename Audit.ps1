@@ -370,6 +370,10 @@ function HostsFileIntegrity{
 	return $result
 }
 
+function CheckPSAliasing{
+
+
+}
 
 
 function Main{
