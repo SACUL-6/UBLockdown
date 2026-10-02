@@ -45,15 +45,19 @@ function OS{
 }
 
 function IP{
-	$four = Get-NetIPAddress -AddressFamily IPv4
-	$six = Get-NetIPAddress -AddressFamily IPv6
+	$four = Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias Wi-Fi        
+	$six =  Get-NetIPAddress -InterfaceAlias "Wi-Fi" -AddressFamily IPv6 -AddressState Preferred | Select-Object IPAddress, PrefixOrigin, SuffixOrigin, ValidLifetime    
+
 	$four = ($four -split "`n")[0]
 	$temp = ((($six -split "`n")[0]) -split "%")
-	$six = $temp[0]
-	$nic = $temp[1]
-	
+	$nic = (($temp[1])-split ";")[0]
+	$six = ((($six)-split " ")[4])[12..(((($six)-split " ")[4]).length-2)]
+	$sixOut = ""
+	foreach($twelve in $six){
+		$sixOut += $twelve
+	}
 	$fourOutput = "IPv4:             " + $four
-	$sixOutput = "IPv6:             " + $six
+	$sixOutput = "IPv6:             " + $SixOut
 	$NICOutput = "NIC:              " + $nic
 
 	Write-Host -ForeGround "White" $fourOutput
