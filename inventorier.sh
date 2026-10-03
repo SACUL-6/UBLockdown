@@ -5,12 +5,18 @@ if ["$(id - u)" -ne 0]; then
     exit 1
 fi
 
-
+# This does the OS, Version and hostname of the system
 echo -n "OS: " 
 cat /etc/os-release | grep "NAME" | grep -o "\"[a-zA-Z]*\"" | grep -o "[a-zA-Z]*"
-
 echo -n "Version " 
 cat /etc/os-release | grep "VERSION=" | grep -o "\".*\"" | grep -o "[^\"]*"
-
 echo -n "Hostname: "
 hostname
+
+
+
+#This does IP and MAC address
+echo -n "IP Address: "
+ip a | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | grep -v "127.0.0.1"
+echo -n "MAC Address: "
+ip -brief link | grep -o "[0-9a-fA-F]*:[0-9a-fA-F]*:[0-9a-fA-F]*:[0-9a-fA-F]*:[0-9a-fA-F]*:[0-9a-fA-F]*" | grep -v "00:00:00:00:00:00"
