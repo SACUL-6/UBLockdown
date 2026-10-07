@@ -43,7 +43,7 @@ done
 
 
 
-#Users
+#Other Users
 echo -n "All Users with Login Shell: "
 
 while IFS=':' read -r username pass uid gid gecos homedir loginshell; do
