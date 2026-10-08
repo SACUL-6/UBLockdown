@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # ==========================================
 # IRSeC Linux Blue Team - watch.sh
