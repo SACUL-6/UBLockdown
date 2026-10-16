@@ -1,6 +1,17 @@
 
 #!/usr/bin/env bash
 
+:'
+Scan a specified directory using every .yar rule.
+
+Display matching rule names and filenames.
+
+Apply a per-rule scan timeout.
+
+Continue through other rules if one scan fails.
+
+Return a nonzero exit code if a scan fails.
+'
 set -uo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
